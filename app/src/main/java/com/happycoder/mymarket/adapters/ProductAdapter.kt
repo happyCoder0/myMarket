@@ -1,6 +1,5 @@
 package com.happycoder.mymarket.adapters
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.happycoder.mymarket.R
 import com.happycoder.mymarket.models.Product
-import java.util.*
 import kotlin.collections.ArrayList
 
 class ProductAdapter(context: Context, list: List<Product>) :
@@ -20,13 +18,8 @@ class ProductAdapter(context: Context, list: List<Product>) :
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var products: ArrayList<Product> = list as ArrayList<Product>
     private val context: Context = context
-    private val copy: ArrayList<Product> = ArrayList<Product>()
-
-    init {
-        copy.addAll(products)
-        for (p in copy){
-            Log.d("copy item", p.name)
-        }
+    private val copy: ArrayList<Product> = ArrayList<Product>().also {
+        it.addAll(products)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
@@ -54,13 +47,13 @@ class ProductAdapter(context: Context, list: List<Product>) :
         val priceView: Button = view.findViewById(R.id.priceView)
     }
 
-    public fun filter(query: String?){
+    fun filter(query: String?){
         if(query != null && query.isNotBlank()){
             val result: ArrayList<Product> = ArrayList()
             for(p in products){
                 if (p.name.contains(query, ignoreCase = true) ||
                     p.name.lowercase() == query.lowercase()){
-                        result.add(p)
+                    result.add(p)
                     Log.d("quantity", p.quantity.toString())
                 }
             }

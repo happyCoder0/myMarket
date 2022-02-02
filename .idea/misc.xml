@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.30462962962962964" />
         <entry key="app/src/main/res/drawable/rounded_price_button.xml" value="0.30092592592592593" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.40728831725616294" />
+        <entry key="app/src/main/res/layout/product_list_fragment.xml" value="0.2898550724637681" />
         <entry key="app/src/main/res/layout/product_list_item.xml" value="0.75" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.19791666666666666" />
       </map>

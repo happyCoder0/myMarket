@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"/>
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mainFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/productList"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:name="com.happycoder.mymarket.ListFragment"/>
 </LinearLayout>
