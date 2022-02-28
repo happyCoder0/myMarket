@@ -28,7 +28,7 @@
         android:paddingBottom="5dp"/>
 
     <Button
-        android:id="@+id/priceView"
+        android:id="@+id/priceButton"
         android:layout_width="wrap_content"
         android:minWidth="150dp"
         android:layout_height="wrap_content"
@@ -39,6 +39,6 @@
         android:textSize="20sp"
         android:paddingBottom="5dp"
         android:textColor="@color/white"
-        android:background="@drawable/rounded_price_button"/>
+        android:background="@drawable/rounded_button"/>
 
 </RelativeLayout>

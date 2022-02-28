@@ -1,23 +1,25 @@
 package com.happycoder.mymarket.adapters
 
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
-import com.happycoder.mymarket.R
+import com.happycoder.mymarket.*
+import com.happycoder.mymarket.models.Order
 import com.happycoder.mymarket.models.Product
 import kotlin.collections.ArrayList
 
-class ProductAdapter(context: Context, list: List<Product>) :
-    RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
-
+class ProductListAdapter(private val context: Context,
+                         list: List<Product>) :
+    RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var products: ArrayList<Product> = list as ArrayList<Product>
-    private val context: Context = context
     private val copy: ArrayList<Product> = ArrayList<Product>().also {
         it.addAll(products)
     }
@@ -31,11 +33,18 @@ class ProductAdapter(context: Context, list: List<Product>) :
         val product: Product = products[position]
         holder.nameView.text = product.name
         holder.quantityView.text = "Quantity: " + product.quantity.toString()
-        holder.priceView.text = "$" + product.price.toString()
+        holder.priceButton.text = "$" + product.price.toString()
+        holder.priceButton.setOnClickListener(){
+            val chooserFragment: ChooserFragment = ChooserFragment()
+            val bundle: Bundle = Bundle()
+            bundle.putSerializable("product", product)
+            chooserFragment.arguments = bundle
+            (context as MainActivity).replaceFragment(R.id.mainFragment, chooserFragment)
+        }
 
         if(product.quantity == 0){
-            Log.d("onBindViewHolder quantity", product.quantity.toString())
             holder.quantityView.setTextColor(context.getColor(R.color.red))
+            holder.priceButton.isEnabled = false
         }
     }
 
@@ -44,7 +53,7 @@ class ProductAdapter(context: Context, list: List<Product>) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameView: TextView = view.findViewById(R.id.nameView)
         val quantityView: TextView = view.findViewById(R.id.quantityView)
-        val priceView: Button = view.findViewById(R.id.priceView)
+        val priceButton: Button = view.findViewById(R.id.priceButton)
     }
 
     fun filter(query: String?){

@@ -20,7 +20,7 @@ class ApiHelper {
         val request: HttpsURLConnection = u.openConnection() as HttpsURLConnection
         var json: String = ""
         with(request){
-            readTimeout = 10000
+            readTimeout = 30000
             requestMethod = "GET"
             doInput = true
             doOutput = false

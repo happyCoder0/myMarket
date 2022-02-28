@@ -11,4 +11,6 @@
     <color name="light_green">#48F100</color>
     <color name="grey">#D3DEDC</color>
     <color name="purple_button">#CC6200EE</color>
+    <color name="dark_grey">#DADADA</color>
+    <color name="light_red">#E1F35151</color>
 </resources>

@@ -2,7 +2,6 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/grey">
     <androidx.appcompat.widget.Toolbar
@@ -13,6 +12,5 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.happycoder.mymarket.ListFragment"/>
+        android:layout_height="match_parent"/>
 </LinearLayout>

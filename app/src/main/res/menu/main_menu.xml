@@ -7,10 +7,17 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:icon="@drawable/search_icon"
         app:showAsAction="always|collapseActionView"/>
-    <!--<item
-        android:id="@+id/closeSearch"
-        android:title="Close search"
-        android:icon="@drawable/close"
-        app:showAsAction="ifRoom"/>-->
+
+    <item
+        android:id="@+id/assortment"
+        android:title="Assortment"
+        android:icon="@drawable/apple"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/cart"
+        android:title="Cart"
+        android:icon="@drawable/cart"
+        app:showAsAction="always"/>
 
 </menu>

@@ -4,13 +4,25 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.21302083333333333" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/cancel_button.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/comment_area.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.31203703703703706" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/rounded_borders.xml" value="0.31203703703703706" />
         <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.30462962962962964" />
         <entry key="app/src/main/res/drawable/rounded_price_button.xml" value="0.30092592592592593" />
+        <entry key="app/src/main/res/drawable/sep_line.xml" value="0.1565" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.40728831725616294" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1671875" />
+        <entry key="app/src/main/res/layout/cart_fragment.xml" value="0.18229166666666666" />
+        <entry key="app/src/main/res/layout/cart_item.xml" value="0.18229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/product_chooser_fragment.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/layout/product_list_fragment.xml" value="0.2898550724637681" />
         <entry key="app/src/main/res/layout/product_list_item.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/product_order_view.xml" value="1.0526315789473684" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.19791666666666666" />
       </map>
     </option>
