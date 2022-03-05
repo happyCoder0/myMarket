@@ -11,27 +11,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:textSize="15sp"
-        android:textColor="@color/purple_button"/>
+        android:textSize="30sp"
+        android:textColor="@color/black"/>
 
     <TextView
+        android:id="@+id/orderedQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Select the quantity:"
+        android:text="Select the quantity: 1"
         android:textColor="@color/purple_button"
-        android:textSize="15sp"/>
-    <TextView
-        android:id="@+id/orderedQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/purple_button"
-        android:text="1"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"/>
+        android:textSize="20sp"/>
 
     <SeekBar
         android:id="@+id/quantitySelector"
@@ -44,11 +36,17 @@
     <EditText
         android:id="@+id/editComment"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/dark_grey"
+        android:layout_height="wrap_content"
+        android:background="@drawable/comment_input"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:maxWidth="400dp"
         android:inputType="textMultiLine"
         android:hint="You can write your comment here..."/>
 

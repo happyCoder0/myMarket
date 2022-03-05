@@ -22,11 +22,11 @@ class ChooserFragment()
         val product: Product = arguments?.get("product") as Product
         val orderedQuantity: TextView = view.findViewById(R.id.orderedQuantity)
         val nameView: TextView = view.findViewById(R.id.productName)
-        nameView.text = product.name
         val quantitySelector: SeekBar = view.findViewById(R.id.quantitySelector)
         val editComment: EditText = view.findViewById(R.id.editComment)
         val addButton: Button = view.findViewById(R.id.addButton)
         val cancelButton: Button = view.findViewById(R.id.cancelButton)
+        nameView.text = product.name
         quantitySelector.progressDrawable.colorFilter = PorterDuffColorFilter(resources
             .getColor(R.color.purple_200), PorterDuff.Mode.MULTIPLY)
         quantitySelector.thumb.colorFilter = PorterDuffColorFilter(resources
@@ -35,7 +35,7 @@ class ChooserFragment()
         quantitySelector.max = product.quantity
         quantitySelector.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                orderedQuantity.text = p1.toString()
+                orderedQuantity.text = "Select the quantity: ${p1.toString()}"
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {

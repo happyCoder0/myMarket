@@ -3,25 +3,27 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/orderList"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:background="@drawable/rounded_borders"/>
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="20dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     <!--Separation line-->
-    <View
+    <!--<View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/grey"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"/>-->
     <Button
+        android:id="@+id/submitOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_button"
-        android:id="@+id/submit"
         android:layout_gravity="center_horizontal"
         android:text="Pay"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"/>
 </LinearLayout>

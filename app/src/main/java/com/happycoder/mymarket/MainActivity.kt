@@ -9,7 +9,6 @@ import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.happycoder.mymarket.models.Order
-import com.happycoder.mymarket.models.Product
 import java.util.stream.Collectors
 
 class MainActivity : AppCompatActivity() {

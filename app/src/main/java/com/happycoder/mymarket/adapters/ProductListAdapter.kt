@@ -16,10 +16,9 @@ import com.happycoder.mymarket.models.Product
 import kotlin.collections.ArrayList
 
 class ProductListAdapter(private val context: Context,
-                         list: List<Product>) :
+                         private var products: ArrayList<Product>) :
     RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var products: ArrayList<Product> = list as ArrayList<Product>
     private val copy: ArrayList<Product> = ArrayList<Product>().also {
         it.addAll(products)
     }
