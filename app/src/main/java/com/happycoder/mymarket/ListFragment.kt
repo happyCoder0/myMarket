@@ -1,6 +1,7 @@
 package com.happycoder.mymarket
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +32,7 @@ class ListFragment()
 
     override fun search(criteria: String?) {
         adapter.filter(criteria)
+        adapter.notifyDataSetChanged()
     }
 
 }

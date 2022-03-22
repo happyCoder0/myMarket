@@ -15,6 +15,8 @@ import com.happycoder.mymarket.models.Order
 import com.happycoder.mymarket.models.Product
 import kotlin.collections.ArrayList
 
+//TODO: Read about structural changes inside RecyclerView
+
 class ProductListAdapter(private val context: Context,
                          private var products: ArrayList<Product>) :
     RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
@@ -34,16 +36,13 @@ class ProductListAdapter(private val context: Context,
         holder.quantityView.text = "Quantity: " + product.quantity.toString()
         holder.priceButton.text = "$" + product.price.toString()
         holder.priceButton.setOnClickListener(){
-            val chooserFragment: ChooserFragment = ChooserFragment()
-            val bundle: Bundle = Bundle()
-            bundle.putSerializable("product", product)
-            chooserFragment.arguments = bundle
-            (context as MainActivity).replaceFragment(R.id.mainFragment, chooserFragment)
-        }
-
-        if(product.quantity == 0){
-            holder.quantityView.setTextColor(context.getColor(R.color.red))
-            holder.priceButton.isEnabled = false
+            if(product.quantity > 0){
+                val chooserFragment: ChooserFragment = ChooserFragment()
+                val bundle: Bundle = Bundle()
+                bundle.putSerializable("product", product)
+                chooserFragment.arguments = bundle
+                (context as MainActivity).replaceFragment(R.id.mainFragment, chooserFragment)
+            }
         }
     }
 
