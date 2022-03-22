@@ -32,7 +32,6 @@ class ListFragment()
 
     override fun search(criteria: String?) {
         adapter.filter(criteria)
-        adapter.notifyDataSetChanged()
     }
 
 }

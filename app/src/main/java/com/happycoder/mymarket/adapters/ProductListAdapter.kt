@@ -61,7 +61,6 @@ class ProductListAdapter(private val context: Context,
                 if (p.name.contains(query, ignoreCase = true) ||
                     p.name.lowercase() == query.lowercase()){
                     result.add(p)
-                    Log.d("quantity", p.quantity.toString())
                 }
             }
             products = result

@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment
 import com.happycoder.mymarket.models.Order
 import java.util.stream.Collectors
 
-//TODO: Work the cart item spacing out
-
 class MainActivity : AppCompatActivity() {
 
     lateinit var searchView: SearchView
