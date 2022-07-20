@@ -2,30 +2,26 @@ package com.happycoder.mymarket.adapters
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
-import com.happycoder.mymarket.*
-import com.happycoder.mymarket.models.Order
+import com.happycoder.mymarket.ChooserFragment
+import com.happycoder.mymarket.MainActivity
+import com.happycoder.mymarket.R
 import com.happycoder.mymarket.models.Product
-import kotlin.collections.ArrayList
 
-//TODO: Read about structural changes inside RecyclerView
-
-class ProductListAdapter(private val context: Context,
-                         private var products: ArrayList<Product>) :
+class ProductListAdapter(private val context: Context) :
     RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
+    private var products: ArrayList<Product> = ArrayList()
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private val copy: ArrayList<Product> = ArrayList<Product>().also {
         it.addAll(products)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = inflater.inflate(R.layout.product_list_item, parent, false)
         return ViewHolder(view)
     }
@@ -35,8 +31,8 @@ class ProductListAdapter(private val context: Context,
         holder.nameView.text = product.name
         holder.quantityView.text = "Quantity: " + product.quantity.toString()
         holder.priceButton.text = "$" + product.price.toString()
-        holder.priceButton.setOnClickListener(){
-            if(product.quantity > 0){
+        holder.priceButton.setOnClickListener() {
+            if (product.quantity > 0) {
                 val chooserFragment: ChooserFragment = ChooserFragment()
                 val bundle: Bundle = Bundle()
                 bundle.putSerializable("product", product)
@@ -54,17 +50,23 @@ class ProductListAdapter(private val context: Context,
         val priceButton: Button = view.findViewById(R.id.priceButton)
     }
 
-    fun filter(query: String?){
-        if(query != null && query.isNotBlank()){
+    fun setItems(items: ArrayList<Product>) {
+        products = items
+        notifyDataSetChanged()
+    }
+
+    fun filter(query: String?) {
+        if (query != null && query.isNotBlank()) {
             val result: ArrayList<Product> = ArrayList()
-            for(p in products){
+            for (p in products) {
                 if (p.name.contains(query, ignoreCase = true) ||
-                    p.name.lowercase() == query.lowercase()){
+                    p.name.lowercase() == query.lowercase()
+                ) {
                     result.add(p)
                 }
             }
             products = result
-        }else{
+        } else {
             products = copy
         }
         notifyDataSetChanged()

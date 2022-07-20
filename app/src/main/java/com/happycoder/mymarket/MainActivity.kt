@@ -32,13 +32,11 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
 
-        if (menu != null) {
-            searchView = menu.findItem(R.id.actionSearch).actionView as SearchView
-        }
+        searchView = menu.findItem(R.id.actionSearch).actionView as SearchView
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (mainFragment is ListFragment) {
@@ -72,16 +70,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun replaceFragment(old: Int, new: Fragment) {
-        with(supportFragmentManager) {
-            beginTransaction()
-                .setTransition(TRANSIT_FRAGMENT_FADE)
-                .replace(old, new)
-                .addToBackStack(null)
-                .commit()
-        }
+        supportFragmentManager
+            .beginTransaction()
+            .setTransition(TRANSIT_FRAGMENT_FADE)
+            .replace(old, new)
+            .addToBackStack(null)
+            .commit()
     }
 
-    fun addToCart(elem: Order) {
+    fun addToCart(elem: Order){
         val names = cart.stream().map { it.product.name }.collect(Collectors.toList())
         if (!names.contains(elem.product.name)) {
             cart.add(elem)

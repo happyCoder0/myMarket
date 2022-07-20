@@ -1,12 +1,11 @@
 package com.happycoder.mymarket
 
-import android.content.Context
 import android.content.Intent
-import android.os.AsyncTask
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.Gson
-import com.happycoder.mymarket.models.Product
 import com.happycoder.mymarket.util.ApiHelper
 
 class SplashScreen : AppCompatActivity() {
@@ -15,26 +14,12 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        InitialLoadTask(this).execute()
-    }
+        val productListViewModel: ProductListViewModel by viewModels()
 
-    private class InitialLoadTask(private val context: Context) :
-        AsyncTask<Void, Void, ArrayList<Product>>() {
+        Handler(Looper.getMainLooper()).post {
+            val intent = Intent(this, MainActivity::class.java)
 
-        override fun doInBackground(vararg p0: Void?): ArrayList<Product> {
-            return arrayListOf(
-                *Gson().fromJson(ApiHelper().loadProducts(), Array<Product>::class.java)
-            )
+            startActivity(intent)
         }
-
-        override fun onPostExecute(result: ArrayList<Product>?) {
-            super.onPostExecute(result)
-
-            val intent = Intent(context, MainActivity::class.java)
-            context.startActivity(intent)
-            (context as SplashScreen).finish()
-
-        }
-
     }
 }

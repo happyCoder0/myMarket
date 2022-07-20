@@ -1,37 +1,49 @@
 package com.happycoder.mymarket.util
 
-import android.util.Log
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.lang.Exception
-import java.net.HttpURLConnection
-import java.net.URL
-import java.util.stream.Collectors
-import javax.net.ssl.HttpsURLConnection
+import com.happycoder.mymarket.models.Product
+import com.happycoder.mymarket.models.ProductListData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import java.util.concurrent.TimeUnit
 
-class ApiHelper {
+interface Api {
+    @GET("./products")
+    suspend fun getListOfProducts(): ProductListData
+}
 
-    companion object{
-        const val url: String = "https://fathomless-sierra-70705.herokuapp.com"
+object ApiHelper {
+
+    private val interceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
     }
 
-    fun loadProducts(): String{
-        val u: URL = URL(url.plus("/products"))
-        val request: HttpsURLConnection = u.openConnection() as HttpsURLConnection
-        var json: String = ""
-        with(request){
-            readTimeout = 30000
-            requestMethod = "GET"
-            doInput = true
-            doOutput = false
-            connect()
-            json = BufferedReader(InputStreamReader(inputStream)).lines().collect(Collectors.joining())
-            inputStream.close()
-            disconnect()
+
+    private val client = OkHttpClient.Builder()
+        .addInterceptor(interceptor)
+        .callTimeout(60, TimeUnit.SECONDS)
+        .connectTimeout(60, TimeUnit.SECONDS)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .build()
+
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl("https://fathomless-sierra-70705.herokuapp.com")
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(client)
+        .build()
+
+    private val api = retrofit.create(Api::class.java)
+
+    suspend fun getListOfProducts(): ArrayList<Product> {
+        return withContext(Dispatchers.IO){
+            api.getListOfProducts().productList
         }
-
-        Log.d("json", json)
-
-        return json
     }
 }
