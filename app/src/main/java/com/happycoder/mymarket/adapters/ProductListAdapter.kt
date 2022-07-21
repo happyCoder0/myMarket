@@ -17,9 +17,7 @@ class ProductListAdapter(private val context: Context) :
     RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
     private var products: ArrayList<Product> = ArrayList()
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private val copy: ArrayList<Product> = ArrayList<Product>().also {
-        it.addAll(products)
-    }
+    private var copy: ArrayList<Product> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = inflater.inflate(R.layout.product_list_item, parent, false)
@@ -52,6 +50,7 @@ class ProductListAdapter(private val context: Context) :
 
     fun setItems(items: ArrayList<Product>) {
         products = items
+        copy = products
         notifyDataSetChanged()
     }
 
