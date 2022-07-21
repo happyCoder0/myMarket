@@ -1,12 +1,8 @@
 package com.happycoder.mymarket.util
 
 import com.happycoder.mymarket.models.Product
-import com.happycoder.mymarket.models.ProductListData
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,7 +12,7 @@ import java.util.concurrent.TimeUnit
 
 interface Api {
     @GET("./products")
-    suspend fun getListOfProducts(): ProductListData
+    suspend fun getListOfProducts(): ArrayList<Product>
 }
 
 object ApiHelper {
@@ -42,8 +38,8 @@ object ApiHelper {
     private val api = retrofit.create(Api::class.java)
 
     suspend fun getListOfProducts(): ArrayList<Product> {
-        return withContext(Dispatchers.IO){
-            api.getListOfProducts().productList
+        return withContext(Dispatchers.IO) {
+            api.getListOfProducts()
         }
     }
 }

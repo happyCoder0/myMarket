@@ -9,6 +9,7 @@ import com.happycoder.mymarket.util.ApiHelper
 import kotlinx.coroutines.launch
 
 class ProductListViewModel : ViewModel() {
+
     private val list = MutableLiveData<ArrayList<Product>>()
 
     val productList: LiveData<ArrayList<Product>> get() = list
